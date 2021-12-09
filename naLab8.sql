@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
   `device` VARCHAR(45) NOT NULL,
   `account_id` INT NOT NULL,
   PRIMARY KEY (`id`, `account_id`),
-  INDEX `fk_user_account_idx` (`account_id` ASC) VISIBLE,
+  INDEX `fk_user_account_idx` (`account_id` ASC),
   CONSTRAINT `fk_user_account`
     FOREIGN KEY (`account_id`)
     REFERENCES `mydb`.`account` (`id`)
@@ -66,8 +66,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`message` (
   `account_id` INT NOT NULL,
   `chat_id` INT NOT NULL,
   PRIMARY KEY (`id`, `account_id`, `chat_id`),
-  INDEX `fk_message_account1_idx` (`account_id` ASC) VISIBLE,
-  INDEX `fk_message_chat1_idx` (`chat_id` ASC) VISIBLE,
+  INDEX `fk_message_account1_idx` (`account_id` ASC),
+  INDEX `fk_message_chat1_idx` (`chat_id` ASC),
   CONSTRAINT `fk_message_account1`
     FOREIGN KEY (`account_id`)
     REFERENCES `mydb`.`account` (`id`)
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`photo` (
   `width` INT NOT NULL,
   `account_id` INT NOT NULL,
   PRIMARY KEY (`id`, `account_id`),
-  INDEX `fk_photo_account1_idx` (`account_id` ASC) VISIBLE,
+  INDEX `fk_photo_account1_idx` (`account_id` ASC),
   CONSTRAINT `fk_photo_account1`
     FOREIGN KEY (`account_id`)
     REFERENCES `mydb`.`account` (`id`)
@@ -107,8 +107,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`chat_has_account` (
   `chat_id` INT NOT NULL,
   `account_id` INT NOT NULL,
   PRIMARY KEY (`chat_id`, `account_id`),
-  INDEX `fk_chat_has_account_account1_idx` (`account_id` ASC) VISIBLE,
-  INDEX `fk_chat_has_account_chat1_idx` (`chat_id` ASC) VISIBLE,
+  INDEX `fk_chat_has_account_account1_idx` (`account_id` ASC),
+  INDEX `fk_chat_has_account_chat1_idx` (`chat_id` ASC),
   CONSTRAINT `fk_chat_has_account_chat1`
     FOREIGN KEY (`chat_id`)
     REFERENCES `mydb`.`chat` (`id`)
